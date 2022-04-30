@@ -4,7 +4,8 @@ mod tests;
 use std::io::{self, Write};
 use std::time::Instant;
 
-use crate::lib::{check_prime1, check_prime2, check_prime3};
+#[allow(unused_imports)]
+use crate::lib::{is_prime1, is_prime2, is_prime3, is_prime4};
 
 #[allow(unused_must_use)]
 //noinspection ALL
@@ -26,7 +27,7 @@ fn main() {
         }
     }
 
-    let num: usize = match input.trim().parse() {
+    let num: u64 = match input.trim().parse() {
         Ok(value) => {
             println!("{line}");
             value
@@ -42,7 +43,7 @@ fn main() {
     println!("Тестирование первого алгоритма (функция check_prime1):");
     let time = Instant::now();
     let count = (0..num + 1).fold(0usize, |acc, n| {
-        if check_prime1(n) {
+        if is_prime1(n) {
             acc + 1
         } else {
             acc
@@ -55,7 +56,7 @@ fn main() {
     println!("Тестирование второго алгоритма (функция check_prime2):");
     let time = Instant::now();
     let count = (0..num + 1).fold(0usize, |acc, n| {
-        if check_prime2(n) {
+        if is_prime2(n) {
             acc + 1
         } else {
             acc
@@ -68,7 +69,7 @@ fn main() {
     println!("Тестирование третьего алгоритма (функция check_prime3):");
     let time = Instant::now();
     let count = (0..num + 1).fold(0usize, |acc, n| {
-        if check_prime3(n) {
+        if is_prime3(n) {
             acc + 1
         } else {
             acc

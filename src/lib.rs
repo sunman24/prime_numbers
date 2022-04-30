@@ -7,7 +7,7 @@
 /// ## Возвращаемое значение:
 /// ### Булево значение, которое означает является ли число простым
 #[allow(dead_code)]
-pub fn check_prime1(num: usize) -> bool {
+pub fn is_prime1(num: u64) -> bool {
     if num < 2 {
         false
     } else {
@@ -31,8 +31,8 @@ pub fn check_prime1(num: usize) -> bool {
 /// ## Возвращаемое значение:
 /// ### Булево значение, которое означает является ли число простым
 #[allow(dead_code)]
-pub fn check_prime2(num: usize) -> bool {
-    let fin = (num as f64).sqrt().floor() as usize;
+pub fn is_prime2(num: u64) -> bool {
+    let fin = (num as f64).sqrt().floor() as u64;
 
     if num < 2 {
         false
@@ -50,13 +50,31 @@ pub fn check_prime2(num: usize) -> bool {
 /// ## Возвращаемое значение:
 /// ### Булево значение, которое означает является ли число простым
 #[allow(dead_code)]
-pub fn check_prime3(num: usize) -> bool {
-    let fin = (num as f64).sqrt().floor() as usize;
+pub fn is_prime3(num: u64) -> bool {
+    let fin = (num as f64).sqrt().floor() as u64;
 
     return if num < 2 {
         false
     } else {
         for i in 2..(fin + 1) {
+            if num % i == 0 {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+//noinspection ALL
+#[allow(unused)]
+pub fn is_prime4(num: u64) -> bool {
+    let fin = (num as f64).sqrt().floor() as u64;
+
+    if num < 2 {
+        return false;
+    } else {
+        for i in 2..fin + 1 {
             if num % i == 0 {
                 return false;
             }
